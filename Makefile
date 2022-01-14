@@ -13,11 +13,11 @@ setup:	CMakeLists.txt
 
 # Build the project (lib and src)
 build:	setup
-	cmake --build $(BUILD_DIR) --target XXTEMPLATEXX > /dev/zero
+	cmake --build $(BUILD_DIR) --target Waves > /dev/zero
 
 # Build the benchmarking tool
 run:	build
-	./$(BUILD_DIR)/XXTEMPLATEXX
+	./$(BUILD_DIR)/Waves
 
 # Build and run the tests
 test:	build

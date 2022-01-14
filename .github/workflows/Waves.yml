@@ -1,4 +1,4 @@
-name: XXTEMPLATEXX
+name: Waves
 on: [push]
 jobs:
   dependencies:
@@ -12,23 +12,23 @@ jobs:
     runs-on:  ubuntu-latest
     steps:
       - name: install google logging library
-        run:  sudo apt install -y libgoogle-glog-dev
+        run:  sudo apt install -y libunwind-dev libgoogle-glog-dev
       - uses: actions/checkout@v2
       - name: configure cmake
         run:  cmake -H. -Bbuild
       - name: Build src and lib files
-        run:  cmake --build build --target XXTEMPLATEXX
+        run:  cmake --build build --target Waves
       - name: Run the benchmarks
-        run: ./build/XXTEMPLATEXX
+        run: ./build/Waves
 
   tests:
     needs:    dependencies
     runs-on:  ubuntu-latest
     steps:
       - name: install google logging library
-        run:  sudo apt install -y libgoogle-glog-dev
-      - name: download catch2 v2
-        run:  git clone -b v2.x https://github.com/catchorg/Catch2.git
+        run:  sudo apt install -y libunwind-dev libgoogle-glog-dev
+      - name: download catch2 v3
+        run:  git clone https://github.com/catchorg/Catch2.git
       - name: setup catch2
         run:  cmake -BCatch2/build -HCatch2 -DBUILD_TESTING=OFF
       - name: build and install catch2
